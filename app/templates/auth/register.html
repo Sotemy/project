@@ -13,7 +13,7 @@
 
 <div>
   <div>
-    <legend>Sign in</legend>
+    <legend>Register</legend>
     {% with errors = get_flashed_messages(category_filter=["error"]) %}
     {% if errors %}
     <div>
@@ -33,18 +33,22 @@
     {% endfor %}
     </div>
     {% endif %}
-    <form method="POST" action="." accept-charset="UTF-8" role="form"  enctype="multipart/form-data">
+    <form method="POST" action="." accept-charset="UTF-8" role="form">
       {{ form.csrf_token }}
+      {{ render_field(form.name, placeholder="Name",
+      autofocus="") }}
       {{ render_field(form.email, placeholder="Your Email Address",
                                   autofocus="") }}
       {{ render_field(form.password, placeholder="Password") }}
+      {{ render_field(form.password2, placeholder="Password again") }}
       <div>
       <label>
         <input type="checkbox" name="remember" value="1"> Remember Me
       </label>
       <a role="button" href="">Forgot your password?</a><span class="clearfix"></span>
       </div>
-      <button type="submit" name="submit">Sign in</button>
+      <button type="submit" name="submit">Register</button>
     </form>  
+    <a href="{{url_for('auth.signin')}}" class=""></a>
   </div>
 </div>
