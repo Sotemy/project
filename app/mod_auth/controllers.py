@@ -1,6 +1,5 @@
 # Import flask dependencies
-from flask import Blueprint, request, render_template, \
-                  flash, g, session, redirect, url_for
+from flask import Blueprint, request, render_template, flash, session, redirect, url_for
 
 # Import password / encryption helper tools
 from werkzeug.security import check_password_hash, generate_password_hash
@@ -40,3 +39,7 @@ def signin():
         flash('Wrong email or password', 'error-message')
 
     return render_template("auth/signin.html", form=form)
+
+@mod_auth.route('/register/', methods=['GET', 'POST'])
+def register():
+    pass
