@@ -10,6 +10,11 @@
              |-- controllers.py
              |-- models.py
              |-- forms.py
+         |-- /admin                     # Our first module, mod_auth
+             |-- __init__.py            #local blueprints
+             |-- controllers.py
+             |-- models.py
+             |-- forms.py
              
          |-- /errors
              |-- __init__.py            #local blueprints
@@ -22,5 +27,7 @@
                  |-- signin.html
                  |-- register.html
              |-- base.html
+             |__ /admin
+                 |-- base.html
 
          |__ /static
