@@ -9,6 +9,11 @@ class Config(object):
     SQLALCHEMY_DATABASE_URI = 'sqlite:///' + os.path.join(BASE_DIR, 'app.db')
     DATABASE_CONNECT_OPTIONS = {}
     SQLALCHEMY_TRACK_MODIFICATIONS=False
+    # add to your app.config or config.py file
+    LANGUAGES = {
+        'en': 'English',
+        'de': 'Deutsch'
+    }
 
 class Development(Config):
 
@@ -30,6 +35,7 @@ class Development(Config):
 
     # Statement for enabling the development environment
     DEBUG = True
+
 
 class Production(Config):
 

@@ -23,7 +23,7 @@
 
   <div class='container'>
     <div class="alert alert-info">
-      <legend>Sign in</legend>
+      <legend>{{_('Sign in')}}</legend>
       {% with errors = get_flashed_messages(category_filter=["error"]) %}
       {% if errors %}
       <div>
@@ -50,9 +50,9 @@
         {{ render_field(form.password, placeholder="Password") }}
         <div>
         <label>
-          <input type="checkbox" name="remember" value="1"> Remember Me
+          <input type="checkbox" name="remember" value="1">{{_('Remember Me')}}
         </label>
-        <a role="button" href="">Forgot your password?</a><span class="clearfix"></span>
+        <a role="button" href="">{{_('Forgot your password?')}}</a><span class="clearfix"></span>
         </div>
         <button type="submit" name="submit" class="btn btn-primary">Sign in</button>
       </form>  

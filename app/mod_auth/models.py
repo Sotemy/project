@@ -1,4 +1,4 @@
-from app import db
+from app import db, login_manager
 
 # Define a base model for other database tables to inherit
 class Base(db.Model):
@@ -36,3 +36,7 @@ class User(Base):
 
     def __repr__(self):
         return '<User %r>' % (self.name) 
+
+@login_manager.user_loader
+def load_user(user_id):
+    return User.query.get(user_id)

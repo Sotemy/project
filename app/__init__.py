@@ -1,5 +1,8 @@
 from flask import Flask
 from flask_sqlalchemy import SQLAlchemy
+from flask_babel import Babel
+from flask import request
+from flask_login import LoginManager
 
 from config import config
 
@@ -13,6 +16,10 @@ app.config.from_object(config['development'])
 # by modules and controllers
 db = SQLAlchemy(app)
 
+login_manager=LoginManager(app)
+
+# Translates
+babel = Babel(app)
 # Sample HTTP error handling
 from app.errors import mod_error as error_module
 app.register_blueprint(error_module)
@@ -27,6 +34,13 @@ app.register_blueprint(auth_module)
 
 from app.admin import admin as admin_module
 app.register_blueprint(admin_module)
+
+
+#babel sets locate for translates
+@babel.localeselector
+def get_locale():
+    # return request.accept_languages.best_match(app.config['LANGUAGES'])
+    return request.accept_languages.best_match(app.config['LANGUAGES'].keys())
 
 # Build the database:
 # This will create the database file using SQLAlchemy

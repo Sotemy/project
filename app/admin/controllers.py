@@ -1,6 +1,12 @@
-from flask.templating import render_template
-from app.admin import admin
+from flask import render_template, request
 
-@admin.route('/')
+from app.admin import admin
+from app.admin.forms import AdvertisingForm
+
+
+@admin.route('/', methods=['GET', 'POST'])
 def showPanel():
-    return render_template('admin/admin.html')
+    form = AdvertisingForm(request.form)
+    if form.validate_on_submit():
+        pass
+    return render_template('admin/admin.html', form=form)
