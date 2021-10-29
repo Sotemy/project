@@ -1,3 +1,8 @@
+import flask_login
+
+
+from flask_login import UserMixin
+
 from app import db, login_manager
 
 # Define a base model for other database tables to inherit
@@ -11,7 +16,7 @@ class Base(db.Model):
                                            onupdate=db.func.current_timestamp())
 
 # Define a User model
-class User(Base):
+class User(Base, UserMixin):
 
     __tablename__ = 'auth_user'
 
@@ -39,4 +44,4 @@ class User(Base):
 
 @login_manager.user_loader
 def load_user(user_id):
-    return User.query.get(user_id)
+    return User.query.get(int(user_id))

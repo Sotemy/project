@@ -50,6 +50,13 @@
         {{ render_field(form.date, placeholder="date") }}
       </form>  
     </div>
+    <div class="alert alert-primary">
+      {% for usr in user %}
+        <div class="alert alert-info">
+          <h2>{{usr.id, usr.name}}</h2>
+        </div>
+      {% endfor %}
+    </div>
   </div>
 </body>
 </html>

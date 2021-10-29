@@ -35,6 +35,8 @@ app.register_blueprint(auth_module)
 from app.admin import admin as admin_module
 app.register_blueprint(admin_module)
 
+from app.site import site as site_mod
+app.register_blueprint(site_mod)
 
 #babel sets locate for translates
 @babel.localeselector

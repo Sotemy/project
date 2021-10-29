@@ -5,4 +5,5 @@ from wtforms.validators import DataRequired
 
 class AdvertisingForm(FlaskForm):
     title=StringField('title', validators=[DataRequired()])
+    text=TextField('Text')
     date=DateField('DatePicker', format='%Y-%m-%d')

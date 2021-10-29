@@ -16,6 +16,12 @@
              |-- models.py
              |-- forms.py
              
+         |-- /site
+             |-- __init__.py            #local blueprints
+             |-- controllers.py
+             |-- models.py
+             |-- forms.py
+             
          |-- /errors
              |-- __init__.py            #local blueprints
              |-- controllers.py         #all about functions
@@ -29,5 +35,7 @@
              |-- base.html
              |__ /admin
                  |-- base.html
+             |__ /site
+                 |-- index.html
 
          |__ /static

@@ -29,7 +29,7 @@ def signin():
 
             login_user(user)
             flash('Welcome %s' % user.name)
-            return redirect(url_for('auth.home'))
+            return redirect(url_for('admin.showPanel'))
         else:
             flash('Wrong email or password', 'error-message')
 
