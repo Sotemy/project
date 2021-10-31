@@ -1,6 +1,7 @@
 from flask import request, render_template, flash, redirect, url_for
 from werkzeug.security import check_password_hash, generate_password_hash
-from flask_login import login_user
+from flask_login import login_user, current_user, logout_user
+from werkzeug.urls import url_parse
 # Import the database object from the main app module
 from app import db
 
@@ -16,7 +17,8 @@ from app.mod_auth import mod_auth
 # Set the route and accepted methods
 @mod_auth.route('/signin/', methods=['GET', 'POST'])
 def signin():
-
+    if current_user.is_authenticated:
+        return redirect(url_for('site. index'))
     # If sign in form is submitted
     form = LoginForm(request.form)
 
@@ -27,9 +29,12 @@ def signin():
 
         if user and check_password_hash(user.password, form.password.data):
 
-            login_user(user)
+            login_user(user, remember=form.remember_me.data)
             flash('Welcome %s' % user.name)
-            return redirect(url_for('admin.showPanel'))
+            next_page = request.args.get('next')
+            if not next_page or url_parse(next_page).netloc != '':
+                next_page = url_for('site.index')
+            return redirect(next_page)
         else:
             flash('Wrong email or password', 'error-message')
 
@@ -60,3 +65,8 @@ def register():
         return redirect(url_for('auth.signin'))
 
     return render_template("auth/register.html", form=form)
+
+@mod_auth.route('/logout')
+def logout():
+    logout_user()
+    return redirect(url_for('index'))
