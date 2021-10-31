@@ -2,7 +2,7 @@ from flask import render_template, request
 
 from app.admin import admin
 from app.admin.forms import AdvertisingForm
-from app.mod_auth.models import User
+from app.models import User
 
 
 @admin.route('/', methods=['GET', 'POST'])

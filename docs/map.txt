@@ -3,23 +3,21 @@
     |-- config.py
     |__ /env                            # Virtual Environment
     |__ /app                            # Our Application Module
-
+    
+         |-- models.py
          |-- __init__.py                #here will be registered all blueprints
          |-- /mod_auth                  # Our first module, mod_auth
              |-- __init__.py            #local blueprints
              |-- controllers.py
-             |-- models.py
              |-- forms.py
          |-- /admin                     # Our first module, mod_auth
              |-- __init__.py            #local blueprints
              |-- controllers.py
-             |-- models.py
              |-- forms.py
              
          |-- /site
              |-- __init__.py            #local blueprints
              |-- controllers.py
-             |-- models.py
              |-- forms.py
              
          |-- /errors

@@ -8,7 +8,7 @@ from app import db
 from app.mod_auth.forms import LoginForm, RegisterForm
 
 # Import module models (i.e. User)
-from app.mod_auth.models import User
+from app.models import User
 
 # Define the blueprint: 'auth', set its url prefix: app.url/auth
 from app.mod_auth import mod_auth
