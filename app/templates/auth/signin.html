@@ -25,36 +25,35 @@
     <div class="alert alert-info">
       <legend>{{_('Sign in')}}</legend>
       {% with errors = get_flashed_messages(category_filter=["error"]) %}
-      {% if errors %}
-      <div>
-      {% for error in errors %}
-      {{ error }}<br>
-      {% endfor %}
-      </div>
-      {% endif %}
+        {% if errors %}
+        <div>
+          {% for error in errors %}
+          {{ error }}<br>
+          {% endfor %}
+        </div>
+        {% endif %}
       {% endwith %}
 
       {% if form.errors %}
-      <div>
-      {% for field, error in form.errors.items() %}
-      {% for e in error %}
-      {{ e }}<br>
-      {% endfor %}
-      {% endfor %}
-      </div>
+        <div>
+          {% for field, error in form.errors.items() %}
+            {% for e in error %}
+              {{ e }}<br>
+            {% endfor %}
+          {% endfor %}
+        </div>
       {% endif %}
       <form method="POST" action="." accept-charset="UTF-8" role="form"  enctype="multipart/form-data">
         {{ form.csrf_token }}
-        {{ render_field(form.email, placeholder="Your Email Address",
-                                    autofocus="") }}
+        {{ render_field(form.email, placeholder="Your Email Address", autofocus="") }}
         {{ render_field(form.password, placeholder="Password") }}
         <div>
-        <label>
-          <input type="checkbox" name="remember" value="1">{{_('Remember Me')}}
-        </label>
-        <a role="button" href="">{{_('Forgot your password?')}}</a><span class="clearfix"></span>
+          <label>
+            <input class="form-check-input" type="checkbox" name="remember" value="1">{{_('Remember Me')}}
+          </label>
         </div>
         <button type="submit" name="submit" class="btn btn-primary">Sign in</button>
+        <a class="btn btn-light" role="button" href="">{{_('Forgot your password?')}}</a><span class="clearfix"></span>
       </form>  
     </div>
   </div>
